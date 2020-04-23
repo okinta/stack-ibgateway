@@ -14,8 +14,8 @@ send orders to the financial markets.
 
 ## Dependencies
 
-This stack is dependent on the [vultrkv stack][1] in order to retrieve login
+This stack is dependent on the [vault stack][1] in order to retrieve login
 information for IB. It makes use of the [okinta/ibgateway][2] container.
 
-[1]: https://github.com/okinta/vultrkv
+[1]: https://github.com/okinta/stack-vault
 [2]: https://github.com/okinta/ibgateway
