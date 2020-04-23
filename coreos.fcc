@@ -1,0 +1,21 @@
+variant: fcos
+version: 1.0.0
+systemd:
+  units:
+    - name: ibgateway.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=IB Gateway
+        After=network-online.target
+        Wants=network-online.target
+
+        [Service]
+        TimeoutStartSec=0
+        ExecStartPre=-/bin/podman kill ibgateway
+        ExecStartPre=-/bin/podman rm ibgateway
+        ExecStartPre=/bin/podman pull okinta/stack-ibgateway
+        ExecStart=/bin/podman run -p 7000:7000/tcp --name ibgateway okinta/stack-ibgateway
+
+        [Install]
+        WantedBy=multi-user.target

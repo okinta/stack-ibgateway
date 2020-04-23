@@ -1,2 +1,21 @@
-# stack-ibgateway
-Runs Interactive Brokers (IB) gateway as an Okinta stack
+# README
+
+Runs Interactive Brokers (IB) gateway as an Okinta stack.
+
+## What is an Okinta Stack?
+
+An Okinta stack is a deployable unit that runs within Okinta's infrastructure.
+Stacks describe all necessary information to deploy a service.
+
+## What is this Stack?
+
+This stack runs IB gateway as a service, allowing other services to remotely
+send orders to the financial markets.
+
+## Dependencies
+
+This stack is dependent on the [vultrkv stack][1] in order to retrieve login
+information for IB. It makes use of the [okinta/ibgateway][2] container.
+
+[1]: https://github.com/okinta/vultrkv
+[2]: https://github.com/okinta/ibgateway
