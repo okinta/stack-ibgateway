@@ -4,10 +4,18 @@
 # Loads settings from the Vault, then loads IB Gateway
 #
 
-LOGIN=$(curl http://vultrkv.in.okinta.ge:7020/api/kv/ib_paper_login)
+LOGIN=$(wget -q -O - http://vultrkv.in.okinta.ge:7020/api/kv/ib_paper_login)
+if [ -z "$LOGIN" ]; then
+    echo "Could not obtain login from Vault" >&2
+    exit 1
+fi
 export LOGIN
 
-PASSWORD=$(curl http://vultrkv.in.okinta.ge:7020/api/kv/ib_paper_password)
+PASSWORD=$(wget -q -O - http://vultrkv.in.okinta.ge:7020/api/kv/ib_paper_password)
+if [ -z "$PASSWORD" ]; then
+    echo "Could not obtain password from Vault" >&2
+    exit 1
+fi
 export PASSWORD
 
 export MODE=paper
