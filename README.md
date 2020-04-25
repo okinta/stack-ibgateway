@@ -23,3 +23,23 @@ information for IB. It makes use of the [okinta/ibgateway][2] container.
 
 [1]: https://github.com/okinta/stack-vault
 [2]: https://github.com/okinta/ibgateway
+
+## Development
+
+### Building
+
+    docker build -t okinta/stack-ibgateway .
+
+### Running
+
+    docker run okinta/stack-ibgateway
+
+### Connecting to Vault
+
+To connect to Vault locally, establish an SSH tunnel:
+
+    ssh -N -o ServerAliveInterval=60 -o ExitOnForwardFailure=yes -L 7020:127.0.0.1:7020 <VAULT HOST>
+
+Then to allow access to Vault inside the container, use:
+
+    docker run --add-host "vault.in.okinta.ge:$(docker run alpine getent hosts host.docker.internal | cut -d' ' -f1)" okinta/stack-ibgateway
