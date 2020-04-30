@@ -20,7 +20,7 @@ if [[ ! "$MODE" =~ ^(live|paper)$ ]]; then
     exit 1
 fi
 
-su-exec ibgateway 'envsubst < ~/ibc/config.ini.template > ~/ibc/config.ini'
+su ibgateway -c 'envsubst < ~/ibc/config.ini.template > ~/ibc/config.ini'
 
 # Start Xvfb daemon so IB Gateway has somewhere to display itself
 Xvfb :99 -screen 0 640x480x8 -nolisten tcp -nolisten unix &
