@@ -1,4 +1,5 @@
-FROM ubuntu:18.04 as base
+ARG UBUNTU_VERSION=18.04
+FROM ubuntu:$UBUNTU_VERSION
 
 # Install tools to install other tools
 RUN apt-get update \
@@ -45,7 +46,7 @@ RUN apt-get install --no-install-recommends -y build-essential \
     && cp su-exec /deps/usr/local/bin \
     && chmod o+x /deps/usr/local/bin/su-exec
 
-FROM base
+FROM ubuntu:$UBUNTU_VERSION
 
 # Install dependencies
 RUN apt-get update \
