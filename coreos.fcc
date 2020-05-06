@@ -1,5 +1,9 @@
 variant: fcos
 version: 1.0.0
+passwd:
+  users:
+    - name: ibgateway
+
 systemd:
   units:
     - name: ibgateway.service
@@ -11,6 +15,7 @@ systemd:
         Wants=network-online.target
 
         [Service]
+        User=ibgateway
         TimeoutStartSec=0
         ExecStartPre=-/bin/podman kill ibgateway
         ExecStartPre=-/bin/podman rm ibgateway
