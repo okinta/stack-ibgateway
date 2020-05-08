@@ -19,7 +19,8 @@ send orders to the financial markets.
 ## Dependencies
 
 This stack is dependent on the [vault stack][1] in order to retrieve login
-information for IB. It makes use of the [okinta/ibgateway][2] container.
+information for IB. It produces the [okinta/ibgateway][2] container, which is
+managed as a seperate generic repository.
 
 [1]: https://github.com/okinta/stack-vault
 [2]: https://github.com/okinta/ibgateway
